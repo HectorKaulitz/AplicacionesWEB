@@ -1,6 +1,6 @@
 # Tipos de dato UNIDAD 1
 # 24/agosto/2022
-# El hector
+
 
 # Datos primitivos python
 """

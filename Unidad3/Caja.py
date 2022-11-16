@@ -200,9 +200,13 @@ class Ejecutable:
             cont = "";
             while len(cont) < self.longitudPassword:
                 cont += '' + chr(asc[random.randint(0, (len(asc) - 1))]);
+            cont += str(self.generar_numeros())
             self.arrayPassword.append(cont);
             self.arrayPasswordSeguridad.append(self.Fuerte(cont))
             i += 1;
+
+    def generar_numeros(self):
+        return random.randint(0, 9)
 
     def Fuerte(self,contra):
         esFuerte = False;
@@ -211,10 +215,10 @@ class Ejecutable:
         numeroCaracter = 0;
 
         for caracter in contra:
-            if (ord(caracter) > 64 and ord(caracter) < 91):  # si es maysucula
+            if ord(caracter) > 64 and ord(caracter) < 91:  # si es maysucula
                 numeroMayusculas += 1;
             else:  # si no es minuscula
-                if (ord(caracter) > 96 and ord(caracter) < 123):
+                if ord(caracter) > 96 and ord(caracter) < 123:
                     numeroMinusculas += 1;
                 else:  # es cualquier otro caracter
                     numeroCaracter += 1;

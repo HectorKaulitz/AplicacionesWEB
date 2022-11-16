@@ -15,10 +15,9 @@ import string
 #    o bien usar el constructor de la clase set() y pasarle como argumento un objeto iterable
 #    (como una lista, una tupla, una cadena …).
 
-conjunto_1 ={1,2,3,4,5,6,7,8,9,0}
+conjunto_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
 conjunto_2 = set([1, 2, 3, 4])
 conjunto_3 = set(range(10))
-
 
 #    Usando la función forezenset. es inmutable y su contenido no puede ser modificado
 #    una vez que ha sido inicializado
@@ -34,9 +33,6 @@ print(string.ascii_uppercase)
 abc = frozenset(string.ascii_uppercase)
 print(abc)
 
-
-
-
 #    Los elementos repetidos se eliminan
 
 
@@ -46,12 +42,11 @@ print(abc)
 #    a través de un índice.
 
 
-
 # 4. Añadir elementos: con el método add() ó con el método update()
 #    Agregar el numero 8 al conjunto c
 c4 = set()
 c4.add(1)
-c4.update({3,5,7})
+c4.update({3, 5, 7})
 print(c4)
 
 #    Agregar varios elementos al conjunto
@@ -64,32 +59,29 @@ c4.discard(5)
 c4.discard(100)
 print(c4)
 
-
 #     pop() devuelve un elemento aleatorio y lo elimina, si el conjunto esta vacio lanza una
 #     excepcion KeyError.
 print(c4.pop())
 print(c4)
-
 
 #    El método clear() elimina todos los elementos del conjunto
 c4.clear()
 print(c4)
 
 #    Número de elementos en un conlunto con la función len()
-c4.update({1,2,3,4})
+c4.update({1, 2, 3, 4})
 print(len(c4))
 
 #    Verificar si un elemento esta dentro de un conjunto
 print(2 in c4)
 print(7 in c4)
 
-
 # ************************ Operaciones con conjuntos
 # 1. Union  ( | )
-a = {1,2,3,4}
-c = {1,2,3,4}
-b = {3,4,5,6}
-print(a|b)
+a = {1, 2, 3, 4}
+c = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+print(a | b)
 
 # 2. Intersección ( & )
 print(a & b)
@@ -116,8 +108,7 @@ print(b.isdisjoint(a))
 #    de un conjunto están contenidos en el otro. Esto quiere decir que cada uno es un subconjunto
 #    del otro.
 print(a == b)
-print(a==c)
-
+print(a == c)
 
 '''
 Crear un programa que utilice los archivos Estudiantes.prn y kardex.txt:
@@ -126,17 +117,17 @@ Crear un programa que utilice los archivos Estudiantes.prn y kardex.txt:
 '''
 archivo = open("Estudiantes.prn", mode="r")
 conjuntoEstudiantes = set()
-renglones = archivo.readlines() #arrelego por renglones
+renglones = archivo.readlines()  # arrelego por renglones
 i = 0
-if(archivo.readable()):
+if (archivo.readable()):
     for ren in renglones:
-        #print(ren)
+        # print(ren)
         inf = ren.split("|")
-        #print(inf)
+        # print(inf)
         estudiante = (inf[0], inf[1][:-1])
         conjuntoEstudiantes.add(estudiante)
         i += 1
-        #print(ren)
+        # print(ren)
     archivo.close()
 
 print(conjuntoEstudiantes)
@@ -144,18 +135,18 @@ print(conjuntoEstudiantes)
 2. Crear un método que regrese un conjunto de tuplas de materias.
 '''
 archivo = open("Kardex.txt", mode="r")
-conjuntoMaterias= set()
-renglones = archivo.readlines() #arrelego por renglones
+conjuntoMaterias = set()
+renglones = archivo.readlines()  # arrelego por renglones
 i = 0
-if(archivo.readable()):
+if (archivo.readable()):
     for ren in renglones:
-        #print(ren)
+        # print(ren)
         inf = ren.split("|")
-        #print(inf)
-        materia = (inf[0], inf[1],inf[2][:-1])
+        # print(inf)
+        materia = (inf[0], inf[1], inf[2][:-1])
         conjuntoMaterias.add(materia)
         i += 1
-        #print(ren)
+        # print(ren)
     archivo.close()
 
 print(conjuntoMaterias)
@@ -178,20 +169,19 @@ print(conjuntoMaterias)
    }
 '''
 import json
-miJson = open("alumno.json",mode ="w")
+
+miJson = open("alumno.json", mode="w")
 nc = input("Ingresa numero control")
 cadena = {}
 materia = []
 promedioG = 0
+cad = {}
 for alumno in conjuntoEstudiantes:
-    if(str(alumno[0])==nc):
+    if str(alumno[0]) == nc:
         cad = {}
         for mat in conjuntoMaterias:
-            if str(alumno[0])== str(mat[0]):
-                materia.append({"Nombre":mat[1]," Promedio":mat[2]})
+            if str(alumno[0]) == str(mat[0]):
+                materia.append({"Nombre": mat[1], " Promedio": mat[2]})
                 promedioG += int(mat[2])
-        cad={ "Nombre":alumno[1],"Materias":materia,"Promedio general":(promedioG/len(materia))}
-json.dump(cad,miJson)
-
-
-
+        cad = {"Nombre": alumno[1], "Materias": materia, "Promedio general": (promedioG / len(materia))}
+json.dump(cad, miJson)

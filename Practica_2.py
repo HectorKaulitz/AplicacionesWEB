@@ -1,6 +1,5 @@
 # Listas UNIDAD 2
 # 26/agosto/2022
-# El hector
 
 # lista = []
 # listaDinamica = list()
